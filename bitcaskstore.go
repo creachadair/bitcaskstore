@@ -11,6 +11,11 @@ import (
 	"github.com/creachadair/ffs/blob"
 )
 
+// Opener constructs a bitcaskstore from a path address.
+func Opener(_ context.Context, addr string) (blob.Store, error) {
+	return Open(addr, nil)
+}
+
 // Store implements the blob.Store interface on a bitcask database.
 type Store struct {
 	db *bitcask.Bitcask
