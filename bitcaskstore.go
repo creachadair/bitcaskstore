@@ -73,19 +73,35 @@ func (s *Store) List(ctx context.Context, start string, f func(string) error) er
 	// prefix or we will not get any keys later in the sequence. The db provides
 	// a Range query, but no way to determine the end of the available range, so
 	// we have to just read the whole thing and filter it.
-	err := s.db.Scan([]byte{}, func(key []byte) error {
-		skey := string(key)
-		if skey < start {
+	//
+	// Moreover, while a scan is running, the database is locked, so it is not
+	// possible to update whie the scan is running. To mitigate this, we
+	// implement List as a sequence of scans across the possible range of keys,
+	// and buffer chunks of them to process outside the lock.
+
+	i := 0
+	if len(start) != 0 {
+		i = int(start[0])
+	}
+	for ; i < 256; i++ {
+		var keys []string
+		if err := s.db.Scan([]byte{byte(i)}, func(key []byte) error {
+			if s := string(key); s >= start {
+				keys = append(keys, string(key))
+			}
 			return nil
-		} else if err := f(skey); err != nil {
+		}); err != nil {
 			return err
 		}
-		return nil
-	})
-	if err == blob.ErrStopListing {
-		return nil
+		for _, key := range keys {
+			if err := f(key); err == blob.ErrStopListing {
+				return nil
+			} else if err != nil {
+				return err
+			}
+		}
 	}
-	return err
+	return nil
 }
 
 // Len implements part of blob.Store. This implementation never returns an error.
