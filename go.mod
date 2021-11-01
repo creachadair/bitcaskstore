@@ -3,7 +3,7 @@ module github.com/creachadair/bitcaskstore
 go 1.17
 
 require (
-	git.mills.io/prologic/bitcask v1.0.0
+	git.mills.io/prologic/bitcask v1.0.2
 	github.com/creachadair/ffs v0.0.0-20211024191637-71e3a3b81cae
 )
 
