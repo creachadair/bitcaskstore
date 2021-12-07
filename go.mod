@@ -4,7 +4,7 @@ go 1.17
 
 require (
 	git.mills.io/prologic/bitcask v1.0.2
-	github.com/creachadair/ffs v0.0.0-20211206042038-f49f2ca18ab1
+	github.com/creachadair/ffs v0.0.0-20211206145717-4a8f785256e6
 )
 
 require (
@@ -14,6 +14,6 @@ require (
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/plar/go-adaptive-radix-tree v1.0.4 // indirect
 	github.com/sirupsen/logrus v1.8.1 // indirect
-	golang.org/x/exp v0.0.0-20211129234152-8a230f1f7d7a // indirect
+	golang.org/x/exp v0.0.0-20211207001050-4f2595aad9e7 // indirect
 	golang.org/x/sys v0.0.0-20211205182925-97ca703d548d // indirect
 )
