@@ -14,6 +14,6 @@ require (
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/plar/go-adaptive-radix-tree v1.0.4 // indirect
 	github.com/sirupsen/logrus v1.8.1 // indirect
-	golang.org/x/exp v0.0.0-20220323121947-b445f275a754 // indirect
-	golang.org/x/sys v0.0.0-20220319134239-a9b59b0215f8 // indirect
+	golang.org/x/exp v0.0.0-20220325121720-054d8573a5d8 // indirect
+	golang.org/x/sys v0.0.0-20220325203850-36772127a21f // indirect
 )
