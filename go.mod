@@ -4,7 +4,7 @@ go 1.18
 
 require (
 	git.mills.io/prologic/bitcask v1.0.2
-	github.com/creachadair/ffs v0.0.0-20220728160340-518bb3931eb1
+	github.com/creachadair/ffs v0.0.0-20220729153156-7ad1a821a1c9
 )
 
 require (
