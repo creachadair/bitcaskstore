@@ -72,8 +72,8 @@ github.com/coreos/go-systemd v0.0.0-20190321100706-95778dfbb74e/go.mod h1:F5haX7
 github.com/coreos/go-systemd/v22 v22.3.2/go.mod h1:Y58oyj3AT4RCenI/lSvhwexgC+NSVTIJ3seZv2GcEnc=
 github.com/coreos/pkg v0.0.0-20180928190104-399ea9e2e55f/go.mod h1:E3G3o1h8I7cfcXa63jLwjI0eiQQMgzzUDFVpN/nH/eA=
 github.com/cpuguy83/go-md2man/v2 v2.0.0/go.mod h1:maD7wRr/U5Z6m/iR4s+kqSMx2CaBsrgA7czyZG/E6dU=
-github.com/creachadair/ffs v0.0.0-20230101210408-edf86f9d0abc h1:7MXt7eKKXxOvbAnIpxSD/QbarNiBGzQMj2Wt6yN+iJw=
-github.com/creachadair/ffs v0.0.0-20230101210408-edf86f9d0abc/go.mod h1:RG6qftr+wsLhUPiIghYw/fQeWh2CCPWeFx+D4WPJYWE=
+github.com/creachadair/ffs v0.0.0-20230103165302-eb7e3ec6364b h1:3h4MnphNE9Z2G0FMgKMpqTOLLBGN1LDh5fVFcoF7BVc=
+github.com/creachadair/ffs v0.0.0-20230103165302-eb7e3ec6364b/go.mod h1:XZoVFVGbeigae0P8r+7QkazaTsA3iDHz8txbJ1e6Ivg=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
