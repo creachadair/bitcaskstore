@@ -4,17 +4,17 @@ go 1.18
 
 require (
 	git.mills.io/prologic/bitcask v1.0.2
-	github.com/creachadair/ffs v0.0.0-20230114064141-35883d7e7d11
+	github.com/creachadair/ffs v0.0.0-20230118232329-ed1e02e6e9a9
 )
 
 require (
 	github.com/abcum/lcp v0.0.0-20201209214815-7a3f3840be81 // indirect
-	github.com/creachadair/mds v0.0.0-20230112232013-549c3f4fe455 // indirect
+	github.com/creachadair/mds v0.0.0-20230115232940-050e69c560e9 // indirect
 	github.com/gofrs/flock v0.8.1 // indirect
 	github.com/google/go-cmp v0.5.9 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/plar/go-adaptive-radix-tree v1.0.5 // indirect
 	github.com/sirupsen/logrus v1.9.0 // indirect
-	golang.org/x/exp v0.0.0-20230113213754-f9f960f08ad4 // indirect
+	golang.org/x/exp v0.0.0-20230118134722-a68e582fa157 // indirect
 	golang.org/x/sys v0.4.0 // indirect
 )
