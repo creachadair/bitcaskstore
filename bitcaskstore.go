@@ -112,9 +112,9 @@ func (s *Store) List(ctx context.Context, start string, f func(string) error) er
 // Len implements part of blob.Store. This implementation never returns an error.
 func (s *Store) Len(ctx context.Context) (int64, error) { return int64(s.db.Len()), nil }
 
-// Close implements the optional blob.Closer interface. It syncs and closes all
+// Close implements part of the blob.Store interface. It syncs and closes all
 // of the data files in use by the database.
-func (s *Store) Close(context.Context) error { return s.db.Close() }
+func (s *Store) Close(_ context.Context) error { return s.db.Close() }
 
 // Options are configurations for a Store. A nil *Options is ready for use and
 // provides default values as described.
