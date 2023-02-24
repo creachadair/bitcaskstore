@@ -63,15 +63,6 @@ func (s *Store) Delete(ctx context.Context, key string) error {
 	return s.db.Delete(bkey)
 }
 
-// Size implements part of blob.Store.
-func (s *Store) Size(ctx context.Context, key string) (int64, error) {
-	bits, err := s.Get(ctx, key)
-	if err != nil {
-		return 0, err
-	}
-	return int64(len(bits)), nil
-}
-
 // List implements part of blob.Store.
 func (s *Store) List(ctx context.Context, start string, f func(string) error) error {
 	// N.B. Bitcask's Scan is a true prefix scan, so we can't use start as a
