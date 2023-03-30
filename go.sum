@@ -72,10 +72,10 @@ github.com/coreos/go-systemd v0.0.0-20190321100706-95778dfbb74e/go.mod h1:F5haX7
 github.com/coreos/go-systemd/v22 v22.3.2/go.mod h1:Y58oyj3AT4RCenI/lSvhwexgC+NSVTIJ3seZv2GcEnc=
 github.com/coreos/pkg v0.0.0-20180928190104-399ea9e2e55f/go.mod h1:E3G3o1h8I7cfcXa63jLwjI0eiQQMgzzUDFVpN/nH/eA=
 github.com/cpuguy83/go-md2man/v2 v2.0.0/go.mod h1:maD7wRr/U5Z6m/iR4s+kqSMx2CaBsrgA7czyZG/E6dU=
-github.com/creachadair/ffs v0.0.0-20230321183314-02aaf775b436 h1:ewFI6PyOowvu+y8TGVZQ/8uqDW9hbekmoqwKXbhyBVM=
-github.com/creachadair/ffs v0.0.0-20230321183314-02aaf775b436/go.mod h1:cdWmofdqJYRWnvWnpO6c2ol7F7JymZNGSAWxSYYiang=
-github.com/creachadair/mds v0.0.0-20230321183227-bb0bfa375235 h1:GKdIqA2FqKxiAqY8cJTll3mJrkS2spxwEBoTp5ho7LY=
-github.com/creachadair/mds v0.0.0-20230321183227-bb0bfa375235/go.mod h1:caBACU+n1Q/rZ252FTzfnG0/H+ZUi+UnIQtEOraMv/g=
+github.com/creachadair/ffs v0.0.0-20230327222140-2f4162e209d7 h1:i9wW799Xmyy6dA0drVXAeQ5tKHS20A9iHPOh7V4Qq2E=
+github.com/creachadair/ffs v0.0.0-20230327222140-2f4162e209d7/go.mod h1:TLWnR1gP55o63MesjS0lMJaeP40X8H1zh58g76H3hOc=
+github.com/creachadair/mds v0.0.1 h1:2nX6Sww4dXpScx3b6aYjH1n7iuEH715+jj+cKkKw9BY=
+github.com/creachadair/mds v0.0.1/go.mod h1:caBACU+n1Q/rZ252FTzfnG0/H+ZUi+UnIQtEOraMv/g=
 github.com/davecgh/go-spew v1.1.0/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=
 github.com/davecgh/go-spew v1.1.1 h1:vj9j/u1bqnvCEfJOwUhtlOARqs3+rkHYY13jYWTU97c=
 github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSsI+c5H38=

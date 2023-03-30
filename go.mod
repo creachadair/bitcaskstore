@@ -4,12 +4,12 @@ go 1.19
 
 require (
 	git.mills.io/prologic/bitcask v1.0.2
-	github.com/creachadair/ffs v0.0.0-20230321183314-02aaf775b436
+	github.com/creachadair/ffs v0.0.0-20230327222140-2f4162e209d7
 )
 
 require (
 	github.com/abcum/lcp v0.0.0-20201209214815-7a3f3840be81 // indirect
-	github.com/creachadair/mds v0.0.0-20230321183227-bb0bfa375235 // indirect
+	github.com/creachadair/mds v0.0.1 // indirect
 	github.com/gofrs/flock v0.8.1 // indirect
 	github.com/google/go-cmp v0.5.9 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
