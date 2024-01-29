@@ -79,8 +79,9 @@ func (s *Store) List(ctx context.Context, start string, f func(string) error) er
 	if len(start) != 0 {
 		i = int(start[0])
 	}
+	var keys []string
 	for ; i < 256; i++ {
-		var keys []string
+		keys = keys[:0]
 		if err := s.db.Scan([]byte{byte(i)}, func(key []byte) error {
 			if s := string(key); s >= start {
 				keys = append(keys, string(key))
