@@ -13,7 +13,7 @@ import (
 
 // Opener constructs a bitcaskstore from a path address.
 func Opener(_ context.Context, addr string) (blob.Store, error) {
-	return Open(addr, nil)
+	return New(addr, nil)
 }
 
 // Store implements the blob.Store interface on a bitcask database.
@@ -21,9 +21,9 @@ type Store struct {
 	db *bitcask.Bitcask
 }
 
-// Open opens a store for a bitcask database at the specified path.
+// New creates a Store for a bitcask database at the specified path.
 // If opts == nil, default settings are used as described on Options.
-func Open(path string, opts *Options) (*Store, error) {
+func New(path string, opts *Options) (*Store, error) {
 	db, err := bitcask.Open(path)
 	if err != nil {
 		return nil, err

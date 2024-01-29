@@ -25,7 +25,7 @@ func TestStore(t *testing.T) {
 		defer os.RemoveAll(dir) // best effort cleanup
 	}
 
-	s, err := bitcaskstore.Open(path, nil)
+	s, err := bitcaskstore.New(path, nil)
 	if err != nil {
 		t.Fatalf("Creating store at %q: %v", path, err)
 	}
