@@ -2,8 +2,6 @@ module github.com/creachadair/bitcaskstore
 
 go 1.23
 
-toolchain go1.23.1
-
 require (
 	git.mills.io/prologic/bitcask v1.0.2
 	github.com/creachadair/ffs v0.6.6
