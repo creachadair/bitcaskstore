@@ -11,6 +11,7 @@ import (
 	"git.mills.io/prologic/bitcask"
 	"github.com/creachadair/ffs/blob"
 	"github.com/creachadair/ffs/storage/dbkey"
+	"github.com/creachadair/ffs/storage/monitor"
 )
 
 // Opener constructs a bitcaskstore from a path address.
@@ -20,8 +21,7 @@ func Opener(_ context.Context, addr string) (blob.StoreCloser, error) {
 
 // Store implements the [blob.StoreCloser] interface using a Bitcask database.
 type Store struct {
-	db     *bitcask.Bitcask
-	prefix dbkey.Prefix
+	*monitor.M[*bitcask.Bitcask, KV]
 }
 
 // New constructs a Store by opening or creating a Bitcask database with the
@@ -31,24 +31,13 @@ func New(path string, opts *Options) (Store, error) {
 	if err != nil {
 		return Store{}, err
 	}
-	return Store{db: db, prefix: opts.keyPrefix()}, nil
-}
-
-// Keyspace implements part of the [blob.Store] interface.
-// The result on success has concrete type [KV].
-// This implementation never reports an error.
-func (s Store) Keyspace(_ context.Context, name string) (blob.KV, error) {
-	return KV{db: s.db, prefix: s.prefix.Keyspace(name)}, nil
-}
-
-// Sub implements part of the [blob.Store] interface.
-// This implementation never reports an error.
-func (s Store) Sub(_ context.Context, name string) (blob.Store, error) {
-	return Store{db: s.db, prefix: s.prefix.Sub(name)}, nil
+	return Store{M: monitor.New(db, opts.keyPrefix(), func(c monitor.Config[*bitcask.Bitcask]) KV {
+		return KV{db: c.DB, prefix: c.Prefix}
+	})}, nil
 }
 
 // Close implements part of the [blob.StoreCloser] interface.
-func (s Store) Close(_ context.Context) error { return s.db.Close() }
+func (s Store) Close(_ context.Context) error { return s.DB.Close() }
 
 // KV implements the [blob.KV] interface on a bitcask database.
 type KV struct {
