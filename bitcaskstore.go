@@ -31,8 +31,12 @@ func New(path string, opts *Options) (Store, error) {
 	if err != nil {
 		return Store{}, err
 	}
-	return Store{M: monitor.New(db, opts.keyPrefix(), func(c monitor.Config[*bitcask.Bitcask]) KV {
-		return KV{db: c.DB, prefix: c.Prefix}
+	return Store{M: monitor.New(monitor.Config[*bitcask.Bitcask, KV]{
+		DB:     db,
+		Prefix: opts.keyPrefix(),
+		NewKV: func(_ context.Context, db *bitcask.Bitcask, pfx dbkey.Prefix, _ string) (KV, error) {
+			return KV{db: db, prefix: pfx}, nil
+		},
 	})}, nil
 }
 
