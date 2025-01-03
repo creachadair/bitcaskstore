@@ -53,12 +53,27 @@ type KV struct {
 func (s KV) Get(ctx context.Context, key string) ([]byte, error) {
 	realKey := []byte(s.prefix.Add(key))
 	bits, err := s.db.Get(realKey)
-	if err == bitcask.ErrKeyNotFound || err == bitcask.ErrEmptyKey {
+	if errors.Is(err, bitcask.ErrKeyNotFound) || errors.Is(err, bitcask.ErrEmptyKey) {
 		return nil, blob.KeyNotFound(key)
 	} else if err != nil {
 		return nil, err
 	}
 	return bits, nil
+}
+
+// Stat implements part of [blob.KV].
+func (s KV) Stat(ctx context.Context, keys ...string) (blob.StatMap, error) {
+	out := make(blob.StatMap)
+	for _, key := range keys {
+		bits, err := s.db.Get([]byte(s.prefix.Add(key)))
+		if errors.Is(err, bitcask.ErrKeyNotFound) || errors.Is(err, bitcask.ErrEmptyKey) {
+			continue
+		} else if err != nil {
+			return nil, err
+		}
+		out[key] = blob.Stat{Size: int64(len(bits))}
+	}
+	return out, nil
 }
 
 // Put implements part of [blob.KV]. The bitcask implementation does not accept
