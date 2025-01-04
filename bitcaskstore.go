@@ -61,17 +61,17 @@ func (s KV) Get(ctx context.Context, key string) ([]byte, error) {
 	return bits, nil
 }
 
-// Stat implements part of [blob.KV].
-func (s KV) Stat(ctx context.Context, keys ...string) (blob.StatMap, error) {
-	out := make(blob.StatMap)
+// Has implements part of [blob.KV].
+func (s KV) Has(ctx context.Context, keys ...string) (blob.KeySet, error) {
+	var out blob.KeySet
 	for _, key := range keys {
-		bits, err := s.db.Get([]byte(s.prefix.Add(key)))
+		_, err := s.db.Get([]byte(s.prefix.Add(key)))
 		if errors.Is(err, bitcask.ErrKeyNotFound) || errors.Is(err, bitcask.ErrEmptyKey) {
 			continue
 		} else if err != nil {
 			return nil, err
 		}
-		out[key] = blob.Stat{Size: int64(len(bits))}
+		out.Add(key)
 	}
 	return out, nil
 }
