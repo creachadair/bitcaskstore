@@ -7,6 +7,7 @@ package bitcaskstore
 import (
 	"context"
 	"errors"
+	"iter"
 
 	"git.mills.io/prologic/bitcask"
 	"github.com/creachadair/ffs/blob"
@@ -98,8 +99,10 @@ func (s KV) Delete(ctx context.Context, key string) error {
 	return s.db.Delete(bkey)
 }
 
+var errStopListing = errors.New("stop listing")
+
 // List implements part of [blob.KV].
-func (s KV) List(ctx context.Context, start string, f func(string) error) error {
+func (s KV) List(ctx context.Context, start string) iter.Seq2[string, error] {
 	// N.B. Bitcask's Scan is a true prefix scan, so we can't use start as a
 	// prefix or we will not get any keys later in the sequence. The db provides
 	// a Range query, but no way to determine the end of the available range, so
@@ -109,29 +112,30 @@ func (s KV) List(ctx context.Context, start string, f func(string) error) error 
 	// possible to update whie the scan is running. To mitigate this, we
 	// implement List as a sequence of scans across the possible range of keys,
 	// and buffer chunks of them to process outside the lock.
-
-	i := 0
-	if len(start) != 0 {
-		i = int(start[0])
-	}
-	for ; i < 256; i++ {
-		shard := []byte(s.prefix.Add(string(byte(i))))
-		err := s.db.Scan(shard, func(key []byte) error {
-			observed := s.prefix.Remove(string(key))
-			if observed >= start {
-				if err := f(observed); err != nil {
-					return err
+	return func(yield func(string, error) bool) {
+		i := 0
+		if len(start) != 0 {
+			i = int(start[0])
+		}
+		for ; i < 256; i++ {
+			shard := []byte(s.prefix.Add(string(byte(i))))
+			err := s.db.Scan(shard, func(key []byte) error {
+				observed := s.prefix.Remove(string(key))
+				if observed >= start {
+					if !yield(observed, nil) {
+						return errStopListing
+					}
 				}
+				return nil
+			})
+			if err == errStopListing {
+				return
+			} else if err != nil {
+				yield("", err)
+				return
 			}
-			return nil
-		})
-		if errors.Is(err, blob.ErrStopListing) {
-			return nil
-		} else if err != nil {
-			return err
 		}
 	}
-	return nil
 }
 
 // Len implements part of [blob.KV].
