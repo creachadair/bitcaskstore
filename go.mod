@@ -6,7 +6,7 @@ toolchain go1.24.0
 
 require (
 	git.mills.io/prologic/bitcask v1.0.2
-	github.com/creachadair/ffs v0.13.13
+	github.com/creachadair/ffs v0.13.14
 )
 
 require (
@@ -17,7 +17,7 @@ require (
 	github.com/pkg/errors v0.9.1 // indirect
 	github.com/plar/go-adaptive-radix-tree v1.0.7 // indirect
 	github.com/sirupsen/logrus v1.9.3 // indirect
-	golang.org/x/crypto v0.35.0 // indirect
-	golang.org/x/exp v0.0.0-20250218142911-aa4b98e5adaa // indirect
-	golang.org/x/sys v0.30.0 // indirect
+	golang.org/x/crypto v0.36.0 // indirect
+	golang.org/x/exp v0.0.0-20250305212735-054e65f0b394 // indirect
+	golang.org/x/sys v0.31.0 // indirect
 )
