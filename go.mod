@@ -4,12 +4,12 @@ go 1.24.0
 
 require (
 	git.mills.io/prologic/bitcask v1.0.2
-	github.com/creachadair/ffs v0.14.3
+	github.com/creachadair/ffs v0.14.4
 )
 
 require (
 	github.com/abcum/lcp v0.0.0-20201209214815-7a3f3840be81 // indirect
-	github.com/creachadair/mds v0.25.3 // indirect
+	github.com/creachadair/mds v0.25.4 // indirect
 	github.com/gofrs/flock v0.12.1 // indirect
 	github.com/google/go-cmp v0.7.0 // indirect
 	github.com/pkg/errors v0.9.1 // indirect
