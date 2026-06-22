@@ -28,7 +28,7 @@ type Store struct {
 // New constructs a Store by opening or creating a Bitcask database with the
 // specified path and options.
 func New(path string, opts *Options) (Store, error) {
-	db, err := bitcask.Open(path)
+	db, err := bitcask.Open(path, bitcask.WithMaxKeySize(4096), bitcask.WithMaxValueSize(50<<20))
 	if err != nil {
 		return Store{}, err
 	}
